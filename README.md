@@ -2,6 +2,8 @@
 
 ![gif](https://media.giphy.com/media/ZbeonvEvZBwNeWGC9V/giphy.gif)
 
+Django docs https://django-book.readthedocs.io/en/latest/chapter12.html
+
 1. mkdir 'myfunnyproject'
 2. poetry init
 3. skip through creating pyproject.toml creation
@@ -14,4 +16,5 @@
    you can run poetry export -f requirements.txt --output requirements.txt. 
    If you have configured a CI/CD job that auto deploys your project, you can add 
    this function as a step, which will generate the updated version on each update.
+o inlcude restframework https://www.django-rest-framework.org/tutorial/quickstart/ i included a super user psswd password123
 
