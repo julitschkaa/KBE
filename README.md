@@ -4,6 +4,9 @@
 
 Django docs https://django-book.readthedocs.io/en/latest/chapter12.html
 
+activate virtual env: "source `poetry env info --path`/bin/activate
+run server: python manage.py runserver
+
 1. mkdir 'myfunnyproject'
 2. poetry init
 3. skip through creating pyproject.toml creation

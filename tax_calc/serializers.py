@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User, Group
+from tax_calc.models import Product
 from rest_framework import serializers
 
 
@@ -12,3 +13,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
+
+class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['url', 'name', 'description', 'price', 'location', 'material', 'timesofuse', 'brand', 'slogan', 'recycling', 'weight']

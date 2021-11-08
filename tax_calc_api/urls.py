@@ -1,4 +1,4 @@
-"""kbeproject URL Configuration
+"""tax_calc_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -21,10 +21,11 @@ from tax_calc import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'products',views.ProductViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('tax_calc.urls'))
+    path('', include('tax_calc.urls')),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
