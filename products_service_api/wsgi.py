@@ -1,5 +1,5 @@
 """
-WSGI config for tax_calc_api project.
+WSGI config for products_service_api project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tax_calc_api.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'products_service_api.settings')
 
 application = get_wsgi_application()

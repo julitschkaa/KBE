@@ -1,4 +1,4 @@
-"""tax_calc_api URL Configuration
+"""products_service_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -14,18 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework import routers
-from tax_calc import views
+from products_service import views
 
-router = routers.DefaultRouter() # how to register my mwst api here so its returned when localhostbla/ is called?
-#router.register(r'users', views.UserViewSet)
-#router.register(r'groups', views.GroupViewSet)
-#router.register(r'products',views.ProductViewSet)
+router = routers.DefaultRouter()
+router.register(r'products', views.ProductViewSet)
 
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
-    path('', include('tax_calc.urls')),
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

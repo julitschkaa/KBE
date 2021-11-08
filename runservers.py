@@ -13,7 +13,7 @@ import sys
 # SERVER_IP and/or SERVER_PORT can be None
 SERVERS = (
     ('localhost', None, 'tax_calc_api.settings'),
-    ('localhost', None, 'tax_calc_api.settings'),
+    ('localhost', None, 'products_service_api.settings'),
 )
 
 # at which port to start attempt binding, when SERVER_PORT is empty
