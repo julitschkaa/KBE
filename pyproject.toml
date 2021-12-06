@@ -8,6 +8,7 @@ authors = ["julitschkaa <schaak@posteo.net>"]
 python = "^3.8"
 Django = "^3.2.8"
 djangorestframework = "^3.12.4"
+requests = "^2.26.0"
 
 [tool.poetry.dev-dependencies]
 
