@@ -49,10 +49,12 @@ for server in SERVERS:
     settings = server[2]
     manage_py = glob.glob(cwd + '/*/manage.py')
     try:
+        env = os.environ.copy()
+        env["TAX_CALC_API_URL"]="http://localhost:8000/"
         subprocess.Popen((manage_py[0],
                           'runserver',
                           '%s:%s' % (ip, port),
-                          '--settings=%s' % settings), cwd=cwd)
+                          '--settings=%s' % settings), cwd=cwd, env=env)
     except IndexError:
         print ('Cannot find manage.py')
         sys.exit(1)
