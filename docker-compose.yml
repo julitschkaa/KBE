@@ -1,0 +1,9 @@
+version: "2.0"
+services:
+  products_service_api:
+    image: python:3.8
+    volumes:
+      - ./:/app
+    command: /app/deploy/products_service_api.sh
+    ports:
+      - "8000:80"

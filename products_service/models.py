@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -11,4 +11,4 @@ class Product(models.Model):
     brand = models.TextField()
     slogan = models.TextField()
     recycling = models.CharField(max_length=100)
-    weight = models.FloatField()
+    weight = models.FloatField(validators=[MinValueValidator(0)])

@@ -54,7 +54,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'products_service_api.urls'
 
 TAX_CALC_API_URL = os.environ["TAX_CALC_API_URL"]
-print(TAX_CALC_API_URL)
 
 TEMPLATES = [
     {
@@ -108,6 +107,25 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'products_service.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 
 # Internationalization

@@ -1,0 +1,207 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /products/:
+    get:
+      operationId: listProducts
+      description: API endpoint that allows products to be viewed or edited( if authenticated).
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=4
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?page=2
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+          description: ''
+      tags:
+      - products
+    post:
+      operationId: createProduct
+      description: API endpoint that allows products to be viewed or edited( if authenticated).
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+      tags:
+      - products
+  /products/{id}/:
+    get:
+      operationId: retrieveProduct
+      description: API endpoint that allows products to be viewed or edited( if authenticated).
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this product.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+      tags:
+      - products
+    put:
+      operationId: updateProduct
+      description: API endpoint that allows products to be viewed or edited( if authenticated).
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this product.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+      tags:
+      - products
+    patch:
+      operationId: partialUpdateProduct
+      description: API endpoint that allows products to be viewed or edited( if authenticated).
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this product.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+      tags:
+      - products
+    delete:
+      operationId: destroyProduct
+      description: API endpoint that allows products to be viewed or edited( if authenticated).
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this product.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - products
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        url:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+        price:
+          type: integer
+        location:
+          type: string
+        material:
+          type: string
+          maxLength: 100
+        timesofuse:
+          type: integer
+        brand:
+          type: string
+        slogan:
+          type: string
+        recycling:
+          type: string
+          maxLength: 100
+        weight:
+          type: number
+        tax:
+          type: string
+          readOnly: true
+      required:
+      - name
+      - description
+      - price
+      - location
+      - material
+      - timesofuse
+      - brand
+      - slogan
+      - recycling
+      - weight

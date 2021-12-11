@@ -6,7 +6,6 @@ def get_tax(price):
             tax = None
             try:
                 #r = requests.get("http://localhost:8000/mwst/?cent={}".format(price), headers={"accept":"application/json"})
-                print(settings.TAX_CALC_API_URL,price)
                 r = requests.get("{}mwst/?cent={}".format(settings.TAX_CALC_API_URL,price),
                                  headers={"accept": "application/json"})
                 print(r)
