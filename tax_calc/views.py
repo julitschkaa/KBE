@@ -16,7 +16,7 @@ def tax_calc(request):
         price = int(request.query_params['cent'])
     except ValueError:
         return Response ({'message':"please enter Integer after '?cent='"},status= HTTP_400_BAD_REQUEST, template_name='400.html')
-    tax = price*0.19
+    tax = int(price*0.19)
     context = {
         'price':price,
         'tax':tax

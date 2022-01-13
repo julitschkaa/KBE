@@ -1,9 +1,35 @@
-version: "2.0"
+version: "3"
+   
 services:
-  products_service_api:
-    image: python:3.8
+  db:
+    image: postgres
     volumes:
-      - ./:/app
-    command: /app/deploy/products_service_api.sh
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  products:
+    build: .
+    #command: python manage.py runserver 0.0.0.0:8000
+    command: bash /code/deploy/products_service_api.sh
+    volumes:
+      - .:/code
     ports:
       - "8000:80"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - TAX_CALC_API_URL=http://tax-calculator/
+      - GIPHY_API_URL=https://api.giphy.com/v1/
+      - GIPHY_API_KEY=${GIPHY_API_KEY}
+    depends_on:
+      - db
+  tax-calculator:
+    build: .
+    command: bash /code/deploy/tax_calc_api.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8001:80"
+
+
