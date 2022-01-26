@@ -65,6 +65,9 @@ db.sqlite3
 db.sqlite3-journal
 data/db/
 
+# exported by CSV_exporter:
+products.csv
+
 # Flask stuff:
 instance/
 .webassets-cache

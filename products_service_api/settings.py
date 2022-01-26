@@ -57,9 +57,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'products_service_api.urls'
 
-TAX_CALC_API_URL = os.environ["TAX_CALC_API_URL"]
-GIPHY_API_URL = os.environ["GIPHY_API_URL"]
-GIPHY_API_KEY = os.environ["GIPHY_API_KEY"]
+TAX_CALC_API_URL = os.environ.get("TAX_CALC_API_URL", "")
+GIPHY_API_URL = os.environ.get("GIPHY_API_URL", "")
+GIPHY_API_KEY = os.environ.get("GIPHY_API_KEY", "")
 
 TEMPLATES = [
     {

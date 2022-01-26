@@ -24,6 +24,19 @@ services:
       - GIPHY_API_KEY=${GIPHY_API_KEY}
     depends_on:
       - db
+
+  products-csv-exporter:
+    build: .
+    command: bash /code/deploy/products_csv_exporter.sh
+    volumes:
+      - .:/code
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+
   tax-calculator:
     build: .
     command: bash /code/deploy/tax_calc_api.sh
