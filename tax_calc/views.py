@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer, TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
-from tax_calculator import calculate_tax
+from .tax_calculator import calculate_tax
 
 @api_view()#by default only get requests are allowed
 @renderer_classes([TemplateHTMLRenderer,JSONRenderer])
