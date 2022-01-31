@@ -36,6 +36,15 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+      - sftp
+
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - ./upload:/home/csvworker/upload
+    ports:
+      - "2222:22"
+    command: csvworker:${SFTP_PASSWWORD}:1001
 
   tax-calculator:
     build: .
