@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+poetry install
 source `poetry env info --path`/bin/activate
 
 while true
