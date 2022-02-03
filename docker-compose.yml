@@ -34,6 +34,9 @@ services:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - SFTP_HOST=sftp
+      - SFTP_USERNAME=${SFTP_USERNAME}
+      - SFTP_PASSWORD=${SFTP_PASSWORD}
     depends_on:
       - db
       - sftp
@@ -44,7 +47,7 @@ services:
       - ./upload:/home/csvworker/upload
     ports:
       - "2222:22"
-    command: csvworker:${SFTP_PASSWWORD}:1001
+    command: ${SFTP_USERNAME}:${SFTP_PASSWORD}:1001
 
   tax-calculator:
     build: .
