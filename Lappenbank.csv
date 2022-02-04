@@ -1,5 +1,5 @@
-name,description,price,location,material,timesofuse,brand,werbeslogan,recycling,weight
-Waschlappen,feinste frottierware,11.92,"erminghaeuser weg3, 34497 Korbach",baumwolle,100,green cotton,muesli bio frottee,textilsammlung,10g
+name,description,price,location,material,timesofuse,brand,slogan,recycling,weight
+Waschlappen,feinste frottierware,11.92,name,baumwolle,100,green cotton,muesli bio frottee,textilsammlung,10g
 Putzlappen,allzweckwischtuch,0.1,"Otto-diehls-strasse 13, 48291 Telgte",viscose,20,vileda,das vielseitige Putztuch,restmuell,1g
 Microfaser-Putztuch,zollner allzwecktuch,0.99,"Bruesselerstrasse 3, 07747 Jena",polyester,20,zollner,verrueckt sauber,textilsammlung,3g
 Schwammtuch,putztuch aus schwamm,0.32,"Hauptstrasse 13, 02991 Leippe",viscose,100,schwammtex,Das Schwammtex Schwammtuch an ihrer Seite,restmuell,5g

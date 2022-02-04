@@ -7,6 +7,23 @@ services:
       - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=postgres
+
+  mangodb1:
+    image: mongo
+    #command: --serviceExecutor adaptive
+    environment:
+      - MONGO_INITDB_DATABASE=mangodb2
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+
+  mangodb2:
+    image: mongo
+    #command: --serviceExecutor adaptive
+    environment:
+      - MONGO_INITDB_DATABASE=mangodb2
+      - MONGO_INITDB_ROOT_USERNAME=${MANGO2_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MANGO2_INITDB_ROOT_PASSWORD}
+
   products:
     build: .
     #command: python manage.py runserver 0.0.0.0:8000
@@ -40,6 +57,22 @@ services:
     depends_on:
       - db
       - sftp
+
+  products-csv-importer:
+    build: .
+    command: bash /code/deploy/products_csv_importer.sh
+    volumes:
+      - .:/code
+    environment:
+      - SFTP_HOST=sftp
+      - SFTP_USERNAME=${SFTP_USERNAME}
+      - SFTP_PASSWORD=${SFTP_PASSWORD}
+      - MANGODB2_HOST=mangodb2
+      - MANGODB2_USERNAME=${MANGO2_INITDB_ROOT_USERNAME}
+      - MANGODB2_PASSWORD=${MANGO2_INITDB_ROOT_PASSWORD}
+    depends_on:
+      - sftp
+      - mangodb2
 
   sftp:
     image: atmoz/sftp
