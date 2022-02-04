@@ -10,9 +10,10 @@ This starts up a cluster of:
  2. db (a postgres db linked direktly to products service)
  3. tax-calculator (a service to calculate 19% tax to a given amount in cents), 
  4. products-csv-exporter,
- 5. products-csv-importer, 
- 6. Mangodb1
- 7. Mangodb2
+ 5. sftp (a nifty sftp server for our csv files of all the products)
+ 6. products-csv-importer, 
+ 7. Mangodb1
+ 8. Mangodb2
 
 in order to look into one of your running docker-containers run
 ```
