@@ -1,19 +1,21 @@
 # KBE
 
 ![Architekturdiagram](diagrams/LappenShop.png)
-clone this repository and run
+In order to access the GIPHY-API you need to get your personal API-key for developers here: https://developers.giphy.com/docs/api#quick-start-guide
+Once that is done, clone this repository and rename the file ".pleaseChangeMeToenv" to ".env". This is where your new Giphy Key and other authentication credentials go.
+now you can open a Terminal in your cloned directory and run:
 ```
 $ docker-compose up
 ```
 This starts up a cluster of:
  1. products (the main app that offers all the products inkl. gif and tax),
- 2. db (a postgres db linked direktly to products service)
+ 2. db (a postgres db linked directly to products service)
  3. tax-calculator (a service to calculate 19% tax to a given amount in cents), 
- 4. products-csv-exporter,
- 5. sftp (a nifty sftp server for our csv files of all the products)
- 6. products-csv-importer, 
- 7. Mangodb1
- 8. Mangodb2
+ 4. products-csv-exporter,(shares the codebase with products, automatically exports a csv of all products every 10 seconds)
+ 5. sftp (sftp server, find documentation for this docker image here: https://hub.docker.com/r/atmoz/sftp)
+ 6. products-csv-importer, (a container running a python script using pymongo https://pymongo.readthedocs.io/en/stable/)
+ 7. Mangodb1 (Mongodb. find documentation for this docker-image here: https://hub.docker.com/_/mongo)
+ 8. Mangodb2 (same Mongodb image for csv import)
 
 in order to look into one of your running docker-containers run
 ```
@@ -35,12 +37,15 @@ you can activate the virtual env by running:
 ```
 $ source `poetry env info --path`/bin/activate
 ```
-and, e.g. create a superuser for products, so that you can also PUT new products into db
+That is because this Projekt uses Poetry as a package-management-tool https://python-poetry.org/docs/
+and because the containers listed above are build using Django, you might want to have a look at https://django-book.readthedocs.io
+In order to not only GET products from your products-Service but also PUT new products into db you have to create a superuser with Django's manage.py
 ```
 $ python manage.py createsuperuser
 ```
+with your password and username set here, you can then also insert new Products into your server, once you logged into your products app.
 your trusty endpoints would be: 
-1. Product_Service = http://localhost:8000/products/ -> productssuperuser=admin password=passwort123
+1. Product_Service = http://localhost:8000/products/ -> I chose productssuperuser=admin password=passwort123
 2. Swagger documentation of Products_Service API = http://localhost:8000/swagger/#/
 3. Tax_Calculation_Service = http://localhost:8001/mwst/?cent=100
 

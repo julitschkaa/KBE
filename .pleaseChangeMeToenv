@@ -1,0 +1,7 @@
+GIPHY_API_KEY=your personal dev GIPY API KEY goes here
+SFTP_PASSWORD=put your password for your sftp server here
+SFTP_USERNAME=username of the service that's supposed to upload to your sftp server
+MANGO2_INITDB_ROOT_USERNAME=username for mongodb2 goes here
+MANGO2_INITDB_ROOT_PASSWORD=password for mongodb2 goes here
+MANGO1_INITDB_ROOT_USERNAME=username for mongodb1 goes here
+MANGO1_INITDB_ROOT_PASSWORD=password for mongodb1 goes here
