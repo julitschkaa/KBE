@@ -4,7 +4,7 @@ import pysftp
 import pandas as pd
 from pymongo import MongoClient
 import json
-import urllib
+from pprint import pprint
 
 cnopts = pysftp.CnOpts()
 cnopts.hostkeys = None #not advised for production, really not.
@@ -18,16 +18,20 @@ with srv.cd('upload'):  # chdir to upload
 srv.close()
 print('Successfully downloaded csv')
 
-""" Imports a csv file at path csv_name to a mongo collection
-returns: count of the documents in the new collection
-"""
+#open connection to mangodb2
 client = MongoClient(os.environ.get("MANGODB2_HOST"), port=27017, username=os.environ.get("MANGODB2_USERNAME"),password=os.environ.get("MANGODB2_PASSWORD"), authMechanism='SCRAM-SHA-256')
 db = client["mangodb2"]
-coll = db["products"]
+#check if a collection named products already exists and delete it
+collectionnames = db.list_collection_names()
+if "products" in collectionnames:
+    db.drop_collection("products")
+    print("deleted old products collection on mangodb2")
+#read data from csv, create collection called products, insert csv-data into collection
 data = pd.read_csv("products.csv", header=0)
 payload = json.loads(data.to_json(orient='records'))
-#coll.remove() #chrashed when coll hasn't been initialized yet
-print(payload)
-coll.insert_many(payload)
-#print("inserted "+coll.count()+" into mango2") #same no insert, no coll
-print("did the import thing")
+coll = db["products"]
+result = coll.insert_many(payload)
+print("inserted {} products into mango2".format(len(result.inserted_ids)))
+for product in coll.find():
+    pprint(product["name"])
+print("did the import thing on mangodb2")
