@@ -15,10 +15,6 @@ class Command(BaseCommand):
         fieldnames.remove("gif_url")
         products = Product.objects.all().values(*fieldnames)
 
-        #with open('products.csv', 'w', newline='') as f:
-         #   writer = csv.writer(f)
-          #  writer.writerows(products)
-
         with open('products.csv', 'w', newline='') as csvfile:
 
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -29,7 +25,7 @@ class Command(BaseCommand):
         cnopts = pysftp.CnOpts()
         cnopts.hostkeys = None #not advised for production, really not.
         srv = pysftp.Connection(host=os.environ.get("SFTP_HOST", ""), username=os.environ.get("SFTP_USERNAME", ""),
-                                password=os.environ.get("SFTP_PASSWORD", ""), cnopts=cnopts) #log="./temp/pysftp.log"
+                                password=os.environ.get("SFTP_PASSWORD", ""), cnopts=cnopts)
 
         with srv.cd('upload'):  # chdir to upload
             srv.put('products.csv')  # upload file to sftpserver
