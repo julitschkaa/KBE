@@ -45,9 +45,13 @@ $ python manage.py createsuperuser
 ```
 with your password and username set here, you can then also insert new Products into your server, once you logged into your products app.
 your trusty endpoints would be: 
-1. Product_Service = http://localhost:8000/products/ -> I chose productssuperuser=admin password=passwort123
-2. Swagger documentation of Products_Service API = http://localhost:8000/swagger/#/
-3. Tax_Calculation_Service = http://localhost:8001/mwst/?cent=100
+1. API-Gateway for products = http://localhost/products/
+2. API-Gateway for tax-calculator = http://localhost/tax-calculator/?cent=100
+3. API-Gateway for swagger documentation of products-API = http://localhost/products/swagger/
+each container can be accessed directly via:
+4. Product_Service = http://localhost:8000/products/ -> I chose productssuperuser=admin password=passwort123
+5. Swagger documentation of Products_Service API = http://localhost:8000/swagger/#/
+6. Tax_Calculation_Service = http://localhost:8001/mwst/?cent=100
 
 ![Sequenzdiagram](diagrams/LappenSequenz.png)
 

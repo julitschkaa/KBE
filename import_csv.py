@@ -31,7 +31,6 @@ data = pd.read_csv("products.csv", header=0)
 payload = json.loads(data.to_json(orient='records'))
 coll = db["products"]
 result = coll.insert_many(payload)
-print("inserted {} products into mango2".format(len(result.inserted_ids)))
+print("imported {} products into mango2".format(len(result.inserted_ids)))
 for product in coll.find():
     pprint(product["name"])
-print("did the import thing on mangodb2")

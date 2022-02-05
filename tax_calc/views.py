@@ -12,7 +12,7 @@ from .tax_calculator import calculate_tax
 @renderer_classes([TemplateHTMLRenderer,JSONRenderer])
 def tax_calc(request):
     if not 'cent' in request.query_params:
-        return Response({'message':"the correct API endpoint is 'mwst/?cent=<int>' "},status= HTTP_400_BAD_REQUEST, template_name='400.html')
+        return Response({'message':"please provide query parameter like: '?cent=<int>' "},status= HTTP_400_BAD_REQUEST, template_name='400.html')
     try:
         price = int(request.query_params['cent'])
     except ValueError:
