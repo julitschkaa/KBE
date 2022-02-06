@@ -61,3 +61,8 @@ each container can be accessed directly via:
 
 ![Sequenzdiagram](diagrams/LappenSequenz.png)
 
+TODO:
+this project would still like to have a pretty frontend to display it's exclusive set of products
+there is no storage microservice container yet
+and no Storage_API_Service inside the products-app
+also testing could be done way more thoroughly
