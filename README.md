@@ -18,6 +18,11 @@ This starts up a cluster of:
  7. Mangodb1 (Mongodb. find documentation for this docker-image here: https://hub.docker.com/_/mongo)
  8. Mangodb2 (same Mongodb image for csv import)
 
+Now, that this cluster is up and running, you can open a second terminal and run both unit- AND integration-tests with
+```
+$ ./run_tests.sh 
+```
+
 in order to look into one of your running docker-containers run
 ```
 $ docker-compose exec <the name of your container> bash
@@ -55,18 +60,4 @@ each container can be accessed directly via:
 6. Tax_Calculation_Service = http://localhost:8001/mwst/?cent=100
 
 ![Sequenzdiagram](diagrams/LappenSequenz.png)
-
-1. mkdir 'myfunnyproject'
-2. poetry init
-3. skip through creating pyproject.toml creation
-4. poetry add django
-5. django-admin startproject 'myfunnyprojectapp
-6. cd 'myfunnyprojectapp'
-7. poetry run python manage.py runserver starts the server -> visit localhost:8000 to check if install was successfull
-   (from: https://rasulkireev.com/managing-django-with-poetry/)
-    btw. If you need to have the requirements.txt file with all the dependencies, 
-   you can run poetry export -f requirements.txt --output requirements.txt. 
-   If you have configured a CI/CD job that auto deploys your project, you can add 
-   this function as a step, which will generate the updated version on each update.
-o inlcude restframework https://www.django-rest-framework.org/tutorial/quickstart/ i included a super user psswd passwort123
 
