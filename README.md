@@ -1,4 +1,5 @@
 # KBE
+Trello board for this project can be found here: [Kanbantemplate](https://trello.com/b/C4nsXSoo/kanban-template)
 
 ![Architekturdiagram](diagrams/LappenShop.png)
 In order to access the GIPHY-API you need to get your personal API-key for developers here: https://developers.giphy.com/docs/api#quick-start-guide
