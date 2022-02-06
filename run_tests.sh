@@ -2,13 +2,7 @@
 set -e
 poetry install
 source `poetry env info --path`/bin/activate
-pytest
+echo "---starting unit tests of tax-calc---"
+pytest tax_calc/tax_calculator_unit_tests.py
 echo "---starting integration Tests---"
-docker-compose up -d
-sleep 100
-
-curl localhost/tax-calculator/
-curl localhost/products/
-curl localhost/tax-calculator/?cent=100
-
-docker-compose down
+pytest integration_tests.py
