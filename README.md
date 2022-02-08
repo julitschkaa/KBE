@@ -43,9 +43,9 @@ you can activate the virtual env by running:
 ```
 $ source `poetry env info --path`/bin/activate
 ```
-That is because this Projekt uses Poetry as a package-management-tool https://python-poetry.org/docs/
+That is because this project uses Poetry as a package-management-tool https://python-poetry.org/docs/
 and because the containers listed above are build using Django, you might want to have a look at https://django-book.readthedocs.io
-In order to not only GET products from your products-Service but also PUT new products into db you have to create a superuser with Django's manage.py
+In order to not only GET products from your products-Service but also PUT new products into db you have to create a superuser on the products container with Django's manage.py
 ```
 $ python manage.py createsuperuser
 ```
